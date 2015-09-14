@@ -14,6 +14,10 @@ echo 1000 > $CA_DIR/serial
 
 #Configure Open SSL
 echo "
+[ ca ]
+# \`man ca\`
+default_ca = CA_default
+
 [ CA_default ]
 # Directory and file locations.
 dir               = $CA_DIR
@@ -89,7 +93,7 @@ emailAddress                    = Email Address
 # Optionally, specify some defaults.
 countryName_default             = US
 stateOrProvinceName_default     = Virginia
-localityName_default            =
+localityName_default            = 
 0.organizationName_default      = Luck Solutions
 organizationalUnitName_default  = Luck Solutions Certificate Authority
 #emailAddress_default           =
