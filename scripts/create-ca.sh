@@ -91,7 +91,7 @@ countryName_default             = US
 stateOrProvinceName_default     = Virginia
 localityName_default            =
 0.organizationName_default      = Luck Solutions
-#organizationalUnitName_default =
+organizationalUnitName_default  = Luck Solutions Certificate Authority
 #emailAddress_default           =
 
 [ v3_ca ]
