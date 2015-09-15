@@ -1,12 +1,42 @@
 #! /bin/bash
+OPTIND=1         # Reset in case getopts has been used previously in the shell.
+
+show_help ()
+{
+	echo "Usage: $(basename "$0") [-h] [directory] -- program to create a root certificate authority (CA) and the associated files"
+	echo "where:"
+	echo "	-h: shows this help text"
+	echo "	directory: is the directory to create the CA files in. This defaults to the current working directory if not provided" 
+
+}
+
+# Initialize our own variables:
+CA_DIR=`pwd`
+
+while getopts "h?" opt; do
+    case "$opt" in
+    h|\?)
+        show_help
+        exit 0
+        ;;
+    esac
+done
+
+shift $((OPTIND-1))
+
+[ "$1" = "--" ] && shift
 
 #Determine the directory to create the CA file structure in
-CA_DIR=`pwd`
 if [[ $1 ]]; then
 	CA_DIR=$1
 fi
 
-#Create the Certificate Authority directory structure at the currente working directory
+#Create the Certificate Authority directory structure at the given directory
+if [ ! -d "$CA_DIR" ]; then
+   #Create directory since it does not exist
+   mdkir -p $CA_DIR
+fi
+
 mkdir $CA_DIR/certs $CA_DIR/crl $CA_DIR/newcerts $CA_DIR/private
 chmod 700 $CA_DIR/private
 touch $CA_DIR/index.txt
@@ -155,5 +185,4 @@ openssl req -config $CA_DIR/openssl.cnf \
       -new -x509 -days 7300 -sha256 -extensions v3_ca \
       -out $CA_DIR/certs/ca.cert.pem
 chmod 444 $CA_DIR/certs/ca.cert.pem
-
 
