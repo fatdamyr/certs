@@ -34,7 +34,7 @@ fi
 #Create the Certificate Authority directory structure at the given directory
 if [ ! -d "$CA_DIR" ]; then
    #Create directory since it does not exist
-   mdkir -p $CA_DIR
+   mkdir -p $CA_DIR
 fi
 
 mkdir $CA_DIR/certs $CA_DIR/crl $CA_DIR/newcerts $CA_DIR/private
