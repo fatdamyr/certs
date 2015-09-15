@@ -148,14 +148,20 @@ extendedKeyUsage = critical, OCSPSigning
 openssl genrsa -aes256 -out $INTER_DIR/private/intermediate.key.pem 4096
 chmod 400 $INTER_DIR/private/intermediate.key.pem
 
-#Create the CA Certificate
+#Create the Intermediate CA Certificate request
 openssl req -config $INTER_DIR/openssl.cnf \
 	  -new -sha256 \
       -key $INTER_DIR/private/intermediate.key.pem \
       -out $INTER_DIR/csr/intermediate.csr.pem
 
+# Sign the Intermediate CA with the Root CA
 openssl ca -config $CA_DIR/openssl.cnf -extensions v3_intermediate_ca \
       -days 3650 -notext -md sha256 \
       -in $INTER_DIR/csr/intermediate.csr.pem \
       -out $INTER_DIR/certs/intermediate.cert.pem
+
+#Create certificate chain      
+cat $INTER_DIR/certs/intermediate.cert.pem \
+      $CA_DIR/certs/ca.cert.pem > $INTER_DIR/certs/ca-chain.cert.pem
+# chmod 444 $INTER_DIR/certs/ca-chain.cert.pem
 
