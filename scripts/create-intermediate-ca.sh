@@ -17,6 +17,10 @@ echo 1000 > $INTER_DIR/crlnumber
 
 #Configure Open SSL
 echo "
+[ ca ]
+# \`man ca\`
+default_ca = CA_default
+
 [ CA_default ]
 # Directory and file locations.
 dir               = $INTER_DIR
