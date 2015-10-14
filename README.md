@@ -10,10 +10,10 @@ create-ca.sh /etc/ca
 ```
 
 This scripts creates the following directory structure:
-certs - Stores the generated public certificates for the CA as well as any servers signed by this authority.
-crl - Stores the certificate revocation list
-private - Stores the private key files for the CA and any certificates create by these scripts.
-csr - Stores certificate request files
+* certs - Stores the generated public certificates for the CA as well as any servers signed by this authority.
+* crl - Stores the certificate revocation list
+* private - Stores the private key files for the CA and any certificates create by these scripts.
+* csr - Stores certificate request files
 
 
 ## Create an Intermediate Certificate Authority
