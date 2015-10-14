@@ -13,6 +13,6 @@ create-ca.sh /etc/ca
 To create a new certificate authority, run the _create-intermediate-ca.sh_ script. By default this creates the intermediate CA using the CA in the current directory, but you can provide the CA directory to use as the first parameter. This will create the intermediate CA files in the <CA directory>/intermediate directory.
 
 ```bash
-create-ca.sh /etc/ca
+create-intermediate-ca.sh /etc/ca
 ```
 
