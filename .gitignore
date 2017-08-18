@@ -1,8 +1,9 @@
 /.project
-serial
-index.txt
+serial*
+index.txt*
 openssl.cnf
 certs/
 crl/
 private/
 newcerts/
+csr/

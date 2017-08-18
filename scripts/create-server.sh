@@ -44,7 +44,7 @@ openssl genrsa -aes256 \
 chmod 400 $CA_DIR/private/$SERVER_NAME.key.pem
 
 #Make the csr directory in case it doesn't exist yet
-mkdir -P $CA_DIR/csr
+mkdir -p $CA_DIR/csr
 
 #Create the server request
 openssl req -config $CA_DIR/openssl.cnf \
