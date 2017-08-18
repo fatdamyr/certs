@@ -1,1 +1,8 @@
 /.project
+serial
+index.txt
+openssl.cnf
+certs/
+crl/
+private/
+newcerts/
