@@ -40,7 +40,7 @@ SERVER_NAME=$1
 
 #Create the server private key
 openssl genrsa -aes128 \
-      -out $CA_DIR/private/$SERVER_NAME.key.pem 1024
+      -out $CA_DIR/private/$SERVER_NAME.key.pem 2048
 chmod 400 $CA_DIR/private/$SERVER_NAME.key.pem
 
 #Make the csr directory in case it doesn't exist yet
